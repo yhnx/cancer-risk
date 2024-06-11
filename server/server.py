@@ -17,7 +17,7 @@ def predict_risk():
     hypertension = int(request.form['hypertension'])
 
     response = jsonify({
-        'predict_risk': util.predict_risk(age, sex, weight, height, alcohol_consumption, smoking, genetic_risk, physical_activity, diabetes, hypertension)
+        'risk_percentage': util.predict_risk(age, sex, weight, height, alcohol_consumption, smoking, genetic_risk, physical_activity, diabetes, hypertension)
     })
 
     response.headers.add('Access-Control-Allow-Origin', '*')
@@ -26,4 +26,5 @@ def predict_risk():
 
 if __name__ == '__main__':
     print("Starting Flask Server...")
+    util.load_saved_artifiacts()
     app.run()
