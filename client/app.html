@@ -17,7 +17,26 @@
       <form id="riskForm">
         <div class="form-group">
           <label for="age">Age (in years):</label>
-          <input type="number" class="form-control" id="age" required />
+          <input
+            type="number"
+            class="form-control mt-2"
+            id="ageInput"
+            min="0"
+            max="100"
+            step="1"
+            value="50"
+            oninput="updateAgeSlider()"
+            required
+          />
+          <input
+            type="range"
+            class="form-control-range"
+            id="ageSlider"
+            min="0"
+            max="100"
+            step="1"
+            oninput="updateAgeInput()"
+          />
         </div>
         <div class="form-group">
           <label for="sex">Gender:</label>
@@ -57,9 +76,10 @@
           />
           <small
             ><a
+              rel="noopener"
               href="https://www.nhs.uk/live-well/alcohol-advice/calculating-alcohol-units/"
               target="_blank"
-              >How ot calculate your alcohol units?</a
+              >How to calculate your alcohol units?</a
             ></small
           >
         </div>
