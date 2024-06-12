@@ -1,77 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Liver Cancer Risk Predictor</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" rel="noopener">
-    <link rel="stylesheet" href="app.css">
-</head>
-<body>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+      rel="noopener"
+    />
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
     <div class="container mt-5">
-        <h1 class="text-center">Liver Cancer Risk Predictor</h1>
-        <form id="riskForm">
-            <div class="form-group">
-                <label for="age">Age (in years):</label>
-                <input type="number" class="form-control" id="age" required>
-            </div>
-            <div class="form-group">
-                <label for="sex">Gender:</label>
-                <select class="form-control" id="sex" required>
-                    <option value="0">Male</option>
-                    <option value="1">Female</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="height">Height (in cm):</label>
-                <input type="number" class="form-control" id="height" step="0.1" required>
-            </div>
-            <div class="form-group">
-                <label for="weight">Weight (in kg):</label>
-                <input type="number" class="form-control" id="weight" step="0.1" required>
-            </div>
-            <div class="form-group">
-                <label for="alcohol">Alcohol Consumption (units per week):</label>
-                <input type="number" class="form-control" id="alcohol" step="0.1" required>
-                <small><a href="https://www.nhs.uk/live-well/alcohol-advice/calculating-alcohol-units/" target="_blank">Calculate your alcohol units</a></small>
-            </div>
-            <div class="form-group">
-                <label for="smoking">Smoking:</label>
-                <select class="form-control" id="smoking" required>
-                    <option value="0">No</option>
-                    <option value="1">Yes</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="geneticRisk">Genetic Risk:</label>
-                <select class="form-control" id="geneticRisk" required>
-                    <option value="0">Low</option>
-                    <option value="1">Medium</option>
-                    <option value="2">High</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="physicalActivity">Physical Activity (hours per week):</label>
-                <input type="number" class="form-control" id="physicalActivity" step="0.1" required>
-            </div>
-            <div class="form-group">
-                <label for="diabetes">Diabetes:</label>
-                <select class="form-control" id="diabetes" required>
-                    <option value="0">No</option>
-                    <option value="1">Yes</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="hypertension">Hypertension:</label>
-                <select class="form-control" id="hypertension" required>
-                    <option value="0">No</option>
-                    <option value="1">Yes</option>
-                </select>
-            </div>
-            <button type="button" class="btn btn-primary btn-block" onclick="calculateRisk()">Calculate Risk</button>
-        </form>
-        <div id="result" class="mt-4"></div>
+      <h1 class="text-center">Liver Cancer Risk Predictor</h1>
+      <form id="riskForm">
+        <div class="form-group">
+          <label for="age">Age (in years):</label>
+          <input type="number" class="form-control" id="age" required />
+        </div>
+        <div class="form-group">
+          <label for="sex">Gender:</label>
+          <select class="form-control" id="sex" required>
+            <option value="0">Male</option>
+            <option value="1">Female</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="height">Height (in cm):</label>
+          <input
+            type="number"
+            class="form-control"
+            id="height"
+            step="0.1"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="weight">Weight (in kg):</label>
+          <input
+            type="number"
+            class="form-control"
+            id="weight"
+            step="0.1"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="alcohol">Alcohol Consumption (units per week):</label>
+          <input
+            type="number"
+            class="form-control"
+            id="alcohol"
+            step="0.1"
+            required
+          />
+          <small
+            ><a
+              href="https://www.nhs.uk/live-well/alcohol-advice/calculating-alcohol-units/"
+              target="_blank"
+              >How ot calculate your alcohol units?</a
+            ></small
+          >
+        </div>
+        <div class="form-group">
+          <label for="smoking">Smoking:</label>
+          <select class="form-control" id="smoking" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="geneticRisk">Genetic Risk:</label>
+          <select class="form-control" id="geneticRisk" required>
+            <option value="0">Low</option>
+            <option value="1">Medium</option>
+            <option value="2">High</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="physicalActivity"
+            >Physical Activity (hours per week):</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="physicalActivity"
+            step="0.1"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="diabetes">Diabetes:</label>
+          <select class="form-control" id="diabetes" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="hypertension">Hypertension:</label>
+          <select class="form-control" id="hypertension" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+          </select>
+        </div>
+        <button
+          type="button"
+          class="btn btn-primary btn-block"
+          onclick="calculateRisk()"
+        >
+          Calculate Risk
+        </button>
+      </form>
+      <div id="result" class="mt-4"></div>
     </div>
-    <script src="script.js"></script>
-</body>
+    <script src="app.js"></script>
+  </body>
 </html>
