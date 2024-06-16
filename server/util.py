@@ -10,7 +10,7 @@ __model = None
 
 def predict_risk(age, sex, weight, height, alcohol_consumption, smoking, genetic_risk, physical_activity, diabetes, hypertension):
     load_saved_artifiacts()
-    data= np.zeros( len(__data_columns) )
+    data = [0] * len(__data_columns)
     bmi = weight / (height**2)
     # Assign the values to the data array
     data[0] = age
