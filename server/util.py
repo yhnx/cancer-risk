@@ -21,7 +21,7 @@ def predict_risk(age, sex, weight, height, alcohol_consumption, smoking, genetic
     data_dict = dict(zip(feature_names, data))
 
     # Make a prediction
-    probabilities = __model.predict_proba([list(data_dict.values())])
+    probabilities = __model.predict_proba([data])
 
 
     # The returned probabilities are in the range [0, 1]. 
