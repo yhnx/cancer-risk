@@ -1,4 +1,5 @@
 # Description: This file contains the utility functions that are used to load the saved artifacts and make predictions.
+import pickle
 import numpy as np
 from flask import render_template
 from skl2onnx import convert_sklearn
