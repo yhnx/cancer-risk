@@ -1,9 +1,12 @@
 body {
-  background-image: url("bg.svg"); /* Replace with your background image URL */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
+}
+
+body {
+  background: url({{ url_for('static', filename='bg.svg') }});
 }
 
 .container {
