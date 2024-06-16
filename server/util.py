@@ -1,8 +1,6 @@
 # Description: This file contains the utility functions that are used to load the saved artifacts and make predictions.
 import json 
 import pickle
-import numpy as np
-import pandas as pd
 from flask import render_template
 
 __data_columns = None
@@ -10,27 +8,21 @@ __model = None
 
 def predict_risk(age, sex, weight, height, alcohol_consumption, smoking, genetic_risk, physical_activity, diabetes, hypertension):
     load_saved_artifiacts()
-    data = [0] * len(__data_columns)
+    
+    # Calculate BMI
     bmi = weight / (height**2)
-    # Assign the values to the data array
-    data[0] = age
-    data[1] = sex
-    data[2] = bmi
-    data[3] = alcohol_consumption
-    data[4] = smoking
-    data[5] = genetic_risk
-    data[6] = physical_activity
-    data[7] = diabetes
-    data[8] = hypertension
+    # Assign the values to the data list
+    data = [age, sex, bmi, alcohol_consumption, smoking, genetic_risk, physical_activity, diabetes, hypertension]
 
-    # Convert data to a DataFrame
-    data_df = pd.DataFrame([data], columns=__data_columns)
+    # Define the feature names used during model training
+    feature_names = ['Age', 'Sex', 'BMI', 'AlcoholConsumption', 'Smoking', 'GeneticRisk', 'PhysicalActivity', 'Diabetes', 'Hypertension']
 
-    # Change the column names to match the feature names used during training
-    data_df.columns = ['Age', 'Sex', 'BMI', 'AlcoholConsumption', 'Smoking', 'GeneticRisk', 'PhysicalActivity', 'Diabetes', 'Hypertension']
+    # Convert data to a dictionary
+    data_dict = dict(zip(feature_names, data))
 
     # Make a prediction
-    probabilities = __model.predict_proba(data_df)
+    probabilities = __model.predict_proba([list(data_dict.values())])
+
 
     # The returned probabilities are in the range [0, 1]. 
     # In the case of binary classification, `probabilities[0, 1]` will give you the probability of the positive class.
