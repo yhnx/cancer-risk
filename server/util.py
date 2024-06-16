@@ -2,11 +2,14 @@
 import json 
 import pickle
 import numpy as np
+import pandas as pd
+from flask import render_template
 
 __data_columns = None
 __model = None
 
 def predict_risk(age, sex, weight, height, alcohol_consumption, smoking, genetic_risk, physical_activity, diabetes, hypertension):
+    load_saved_artifiacts()
     data= np.zeros( len(__data_columns) )
     bmi = weight / (height**2)
     # Assign the values to the data array
@@ -20,8 +23,14 @@ def predict_risk(age, sex, weight, height, alcohol_consumption, smoking, genetic
     data[7] = diabetes
     data[8] = hypertension
 
+    # Convert data to a DataFrame
+    data_df = pd.DataFrame([data], columns=__data_columns)
+
+    # Change the column names to match the feature names used during training
+    data_df.columns = ['Age', 'Sex', 'BMI', 'AlcoholConsumption', 'Smoking', 'GeneticRisk', 'PhysicalActivity', 'Diabetes', 'Hypertension']
+
     # Make a prediction
-    probabilities = __model.predict_proba([data])
+    probabilities = __model.predict_proba(data_df)
 
     # The returned probabilities are in the range [0, 1]. 
     # In the case of binary classification, `probabilities[0, 1]` will give you the probability of the positive class.
@@ -35,14 +44,35 @@ def load_saved_artifiacts():
     global __data_columns
     global __model
 
-    with open('server/artifacts/columns.json', 'r') as f:
+    with open('artifacts/columns.json', 'r') as f:
         __data_columns = json.load(f)['data_columns']
 
-    with open('server/artifacts/log_model.pkl', 'rb') as f:
+    with open('artifacts/log_model.pkl', 'rb') as f:
         __model = pickle.load(f)
 
     print("Loading saved artifacts...done")
 
+def apology(message, code=400):
+    """Render message as an apology to user."""
 
-if __name__ == '__main__':
-    load_saved_artifiacts()
+    def escape(s):
+        """
+        Escape special characters.
+
+        https://github.com/jacebrowning/memegen#special-characters
+        """
+        for old, new in [
+            ("-", "--"),
+            (" ", "-"),
+            ("_", "__"),
+            ("?", "~q"),
+            ("%", "~p"),
+            ("#", "~h"),
+            ("/", "~s"),
+            ('"', "''"),
+        ]:
+            s = s.replace(old, new)
+        return s
+
+    return render_template("apology.html", top=code, bottom=escape(message)), code
+

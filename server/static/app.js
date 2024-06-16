@@ -4,7 +4,7 @@ function updateAgeInput() {
   ageInput.value = ageSlider.value;
 }
 
-function updateAgeSlider() {
+/*function updateAgeSlider() {
   const ageSlider = document.getElementById("ageSlider");
   const ageInput = document.getElementById("ageInput");
   ageSlider.value = ageInput.value;
@@ -26,25 +26,16 @@ function onClickedPredictRisk() {
   var diabetes = parseInt(document.getElementById("diabetes").value);
   var hypertension = parseInt(document.getElementById("hypertension").value);
 
-  var url = "/api/predict_risk";
-
-  jQuery.post(url, {
-    age: age,
-    sex: sex,
-    height: height,
-    weight: weight,
-    alcohol: alcohol,
-    smoking: smoking,
-    geneticRisk: geneticRisk,
-    physicalActivity: physicalActivity,
-    diabetes: diabetes,
-    hypertension: hypertension,
-  }),
-    function (data, status) {
-      console.log(data.risk_percentage);
-      document.getElementById(
-        "result"
-      ).innerHTML = `<h2>${data.risk_percentage}</h2>`;
-      console.log(status);
-    };
-}
+  console.log(
+    age,
+    sex,
+    height,
+    weight,
+    alcohol,
+    smoking,
+    geneticRisk,
+    physicalActivity,
+    diabetes,
+    hypertension
+  );
+}*/
