@@ -1,7 +1,5 @@
 # Project Rysk
 
-#### Video Demo: <(https://youtu.be/qOienrfvjIs)>
-
 #### Description:
 
 # Liver Cancer Risk Detector
