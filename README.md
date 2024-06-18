@@ -6,7 +6,7 @@
 
 # Liver Cancer Risk Detector
 
-This project is a web-based application designed to predict the risk of liver cancer based on several user-provided parameters. The application is hosted on Render.com and is accessible at [cancer/stroke risk](https://cancer-stroke-risk.onrender.com). The app employs a logistic regression model trained on a dataset from Kaggle to output a percentage risk score for liver cancer.
+This project is a web-based application designed to predict the risk of liver cancer based on several user-provided parameters. The application is hosted on Render.com and is accessible [https://cancer-risk.onrender.com](https://cancer-risk.onrender.com/). The app employs a logistic regression model trained on a dataset from Kaggle to output a percentage risk score for liver cancer.
 
 ## Overview
 
@@ -38,7 +38,7 @@ The model is trained using the `liver_disease_data` dataset from Kaggle. The tra
 
 ### Jupyter Notebooks
 
-- **Training Notebook**: This notebook includes the code for data cleaning, exploratory data analysis, and training both linear regression and logistic regression models. The logistic regression model was chosen due to its better performance in this context.
+- **Training Notebook**: This notebook includes the code for data cleaning, exploratory data analysis, and training of both linear regression and logistic regression models. The logistic regression model was chosen due to its better performance in this context.
 
 ### Model Files
 
@@ -93,8 +93,8 @@ The model is trained using the `liver_disease_data` dataset from Kaggle. The tra
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/yourusername/cancer-risks.git
-   cd cancer-risks
+   git clone https://github.com/yourusername/cancer-risk.git
+   cd cancer-risk
    ```
 
 2. **Install Dependencies**:
@@ -106,6 +106,7 @@ The model is trained using the `liver_disease_data` dataset from Kaggle. The tra
 3. **Run the Flask Application**:
 
    ```bash
+   cd server
    flask run
    ```
 
