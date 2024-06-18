@@ -95,6 +95,7 @@ The model is trained using the `liver_disease_data` dataset from Kaggle. The tra
    ```bash
    git clone https://github.com/yourusername/cancer-risk.git
    cd cancer-risk
+   cd server
    ```
 
 2. **Install Dependencies**:
@@ -106,7 +107,7 @@ The model is trained using the `liver_disease_data` dataset from Kaggle. The tra
 3. **Run the Flask Application**:
 
    ```bash
-   cd server
+  
    flask run
    ```
 
